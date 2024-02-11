@@ -19,15 +19,11 @@ Follow these steps to get the application up and running:
     git clone <repository-url>
     ```
 
-    Replace `<repository-url>` with the URL of this repository.
-
 2. Navigate into the cloned repository:
 
     ```bash
-    cd <repository-name>
+    cd ScyllaTaskify
     ```
-
-    Replace `<repository-name>` with the name of this repository.
 
 3. Run ScyllaDB using Docker:
 
@@ -38,7 +34,25 @@ Follow these steps to get the application up and running:
 
     This will start a ScyllaDB instance in a Docker container named 'scylladb', and map port 9042 in the container to port 9042 on your local machine.
 
-4. Build and run the application using the Makefile:
+4. Open a new terminal window and connect to the ScyllaDB shell:
+
+    ```bash
+    docker exec -it scylladb cqlsh
+    ```
+
+5. Run the migrations located in the `migrations` folder:
+
+    ```bash
+    SOURCE 'migrations';
+    ```
+
+6. Exit the ScyllaDB shell:
+
+    ```bash
+    quit
+    ```
+
+7. Build and run the application using the Makefile:
 
     ```bash
     make run
