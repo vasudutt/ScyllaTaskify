@@ -15,7 +15,6 @@ import (
 )
 
 func main() {
-	// Initialize your configuration and ScyllaDB manager
 	cfg, err := config.Load()
 	if err != nil {
 		log.Fatal(err)
@@ -33,17 +32,13 @@ func main() {
 	}
 	defer session.Close()
 
-	// Initialize your store and manager
 	store := todostore.NewScyllaStore(session)
 	todoManager := todo.NewTodoManager(uuid.New(), store)
-
-	// Initialize API handlers
 	todoHandler := handler.NewTodoAPIHandler(todoManager)
 
-	// Setup routes using chi
 	r := chi.NewRouter()
 
-	// Define your routes
+	// Define routes
 	r.Route("/api/todos", func(r chi.Router) {
 		r.Post("/", todoHandler.CreateTodoHandler)
 		r.Get("/", todoHandler.GetUserTodosHandler)
