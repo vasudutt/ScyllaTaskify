@@ -16,7 +16,7 @@ Follow these steps to get the application up and running:
 1. Clone the repository from GitHub:
 
     ```bash
-    git clone <repository-url>
+    git clone git@github.com:vasudutt/ScyllaTaskify.git
     ```
 
 2. Navigate into the cloned repository:
